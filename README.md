@@ -19,6 +19,8 @@ npx skills add DrErwin/docs-by-version -g -a codex
 
 安装完成后重启一下 agent 会话即可生效。
 
+安装时只会复制 `skills/docs-by-version/` 目录里的核心文件（`SKILL.md`、`references/`、`scripts/`）；仓库根目录的 `README.md`、`LICENSE`、`.gitignore` 和 `evals/` 不会装到你的机器上。
+
 ## 它解决什么问题
 
 很多项目的文档同时写着“计划要做什么”和“实际做了什么”，还散落在 `docs/`、根目录 README、进度文件里，时间一长就分不清当前完成到哪一步。
@@ -46,12 +48,17 @@ python <技能目录>/docs-by-version/scripts/validate_versioned_docs.py <项目
 
 ```text
 .
-├── SKILL.md                        # skill 主指令
-├── references/
-│   └── templates.md                # requirements / completion / README 模板
-├── scripts/
-│   └── validate_versioned_docs.py  # 文档结构校验脚本
-└── evals/                          # 用于测试 skill 的样例与断言
+├── skills/
+│   └── docs-by-version/              # 安装时只会复制这部分核心文件
+│       ├── SKILL.md                  # skill 主指令
+│       ├── references/
+│       │   └── templates.md          # requirements / completion / README 模板
+│       └── scripts/
+│           └── validate_versioned_docs.py  # 文档结构校验脚本
+├── evals/                            # 测试样例（仅保留在仓库，不随安装复制）
+├── README.md
+├── LICENSE
+└── .gitignore
 ```
 
 ## License
