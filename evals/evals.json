@@ -1,0 +1,45 @@
+{
+  "skill_name": "docs-by-version",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "整理这个示例项目的文档。按 v0.1.0 和 v0.2.0 两个里程碑分开；docs/README.md 只保留项目简介、当前进度和版本列表。架构说明是整个项目长期有效的，登录改版设计只属于 v0.2.0。版本目录不要 README。",
+      "expected_output": "项目总体架构保留在 docs/architecture.md；两个版本都有 requirements.md 和 completion.md；登录改版设计进入 v0.2.0；docs/README.md 提供正确链接；版本目录无 README。",
+      "files": [
+        "evals/fixtures/mixed-project/docs/README.md",
+        "evals/fixtures/mixed-project/docs/spec.md",
+        "evals/fixtures/mixed-project/docs/progress.md",
+        "evals/fixtures/mixed-project/docs/architecture-notes.md",
+        "evals/fixtures/mixed-project/docs/login-redesign.md"
+      ],
+      "expectations": [
+        "docs/README.md 保留简要项目介绍、当前进度和 v0.1.0、v0.2.0 版本列表",
+        "v0.1.0 和 v0.2.0 都有 requirements.md 与 completion.md",
+        "项目总体架构位于 docs/architecture.md，而不是任一版本目录",
+        "登录改版设计位于 docs/versions/v0.2.0/design.md",
+        "任何版本目录内都没有 README.md",
+        "本地 Markdown 链接全部有效"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "把这个项目的需求文档按里程碑整理。v0.3.0 已完成，v0.4.0 只是计划中，不能把计划写成已完成。v0.4.0 的迁移方案只属于该版本；故障排查对整个项目有效，应留在 docs 目录。更新索引并校验。",
+      "expected_output": "准确区分已完成和计划中；迁移方案进入 v0.4.0；故障排查保留在 docs；索引和链接正确。",
+      "files": [
+        "evals/fixtures/status-project/docs/README.md",
+        "evals/fixtures/status-project/docs/requirements.md",
+        "evals/fixtures/status-project/docs/status.md",
+        "evals/fixtures/status-project/docs/migration-plan.md",
+        "evals/fixtures/status-project/docs/troubleshooting.md"
+      ],
+      "expectations": [
+        "v0.3.0 completion.md 明确为已完成并只记录已有结果",
+        "v0.4.0 completion.md 明确为计划中或尚未开始，不虚构验证结果",
+        "迁移方案位于 docs/versions/v0.4.0/migration.md",
+        "故障排查资料保留在 docs/troubleshooting.md",
+        "docs/README.md 的状态和链接与版本文件一致",
+        "任何版本目录内都没有 README.md"
+      ]
+    }
+  ]
+}
